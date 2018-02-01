@@ -27,7 +27,7 @@ def main():
     payment_terms = 14  # days
     last_day = calendar.monthrange(year, month)[1]
     date_of_service = datetime(year=year, month=month, day=last_day)
-    date_of_issue = date_of_service + timedelta(days=3)
+    date_of_issue = date_of_service + timedelta(days=1)
     due_date = date_of_issue + timedelta(days=payment_terms)
 
     rate = float(input(f"USD BnB rate on {date_of_issue.strftime('%d.%m.%Y')}: "))
