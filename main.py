@@ -58,6 +58,8 @@ def main():
         # prepare html
         env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=True)
         html = env.get_template('simple.html').render(**data)
+        with open(f'html_output/latest_{language}.html', 'w') as f:
+            f.write(html)
 
         # generate pdf
         folder = 'output'

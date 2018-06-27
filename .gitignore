@@ -112,3 +112,4 @@ private.py
 # output
 *.pdf
 .last_invoice
+html_output/
