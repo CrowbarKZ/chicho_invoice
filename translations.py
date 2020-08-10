@@ -41,7 +41,7 @@ bg = {
     'net_total_i18n': 'Данъчна основа',
     'payment_details_i18n': 'Начин на плащане',
     'payment_terms_i18n': 'Срок за плащане',
-    'personal_number_i18n': 'ЛНЧ',
+    'personal_number_i18n': 'ЕГН',
     'qty_i18n': 'К-во',
     'total_i18n': 'Общо',
     'unit_i18n': 'Мярка',
