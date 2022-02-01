@@ -93,6 +93,7 @@ frontend/tmp
 
 # VSCode files
 .vscode/
+*.code-workspace
 
 # Deployment
 git-archive.zip
