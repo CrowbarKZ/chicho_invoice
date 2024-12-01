@@ -36,6 +36,22 @@ def main():
 
     rate = float(input(f"USD BnB rate on {date_of_issue.strftime('%d.%m.%Y')}: "))
 
+    additional_items = []
+    additional_items_needed = input("Do you want to add additional items? [no]: ") or "no"
+    additional_items_needed = not(additional_items_needed == "no")
+    if additional_items_needed:
+        while True:
+            item = input("Item description: ")
+            if not item:
+                break
+            item_bg = input("Item description in Bulgarian: ")
+            price = float(input("Item price in USD: "))
+            additional_items.append({
+                "description": item,
+                "description_bg": item_bg,
+                "price": price
+            })
+
     print(f"Preparing invoices for {month}.{year} ...")
     for language in ("en", "bg"):
         # load translated labels
@@ -44,9 +60,18 @@ def main():
         # load private data
         data.update(getattr(private, language))
 
-        # load calculated values
-        base_price = data["price_pvt"]
-        price = base_price if language == "en" else base_price * rate
+        # adjust prices if we are generating a Bulgarian invoice
+        price = data["price_pvt"]
+        if language != "en":
+            price = price * rate
+            for item in additional_items:
+                item["price"] = round(item["price"] * rate, 2)
+
+        # calculate total
+        total = price
+        for item in additional_items:
+            total += item["price"]
+
         data.update(
             {
                 "language": language,
@@ -55,8 +80,10 @@ def main():
                 "date_of_issue_val": date_of_issue.strftime("%d.%m.%Y"),
                 "due_date_val": due_date.strftime("%d.%m.%Y"),
                 "price_val": price,
+                "total_val": total,
                 "rate_val": rate,
                 "invoice_number_val": invoice_number_str,
+                "additional_items": additional_items,
             }
         )
 

@@ -155,13 +155,26 @@
                 <td>{{ '%0.2f' | format(price_val) }} {{ currency_i18n }}</td>
             </tr>
 
+            {% for item in additional_items %}
+
+            <tr class="item last">
+                <td>{{ item.description if language == 'en' else item.description_bg }}</td>
+                <td>{{ date_of_service_val }}</td>
+                <td>1</td>
+                <td>{{ unit_i18n }}</td>
+                <td>{{ '%0.2f' | format(item.price) }} {{ currency_i18n }}</td>
+                <td>{{ '%0.2f' | format(item.price) }} {{ currency_i18n }}</td>
+            </tr>
+
+            {% endfor %}
+
             <tr class="total">
                 <td colspan="3"></td>
                 <td colspan="3">
                     <table>
                         <tr>
                             <td>{{ net_total_i18n }}:</td>
-                            <td>{{ '%0.2f' | format(price_val) }} {{ currency_i18n }}</td>
+                            <td>{{ '%0.2f' | format(total_val) }} {{ currency_i18n }}</td>
                         </tr>
                         <tr>
                             <td>{{ vat_i18n }}: 0.0%</td>
@@ -169,7 +182,7 @@
                         </tr>
                         <tr>
                             <td>{{ total_i18n }}:</td>
-                            <td>{{ '%0.2f' | format(price_val) }} {{ currency_i18n }}</td>
+                            <td>{{ '%0.2f' | format(total_val) }} {{ currency_i18n }}</td>
                         </tr>
                         {% if language != 'en' %}
                         <tr>
