@@ -13,7 +13,7 @@ TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templat
 
 def main():
     # calculate data
-    year = int(input("Year [2024]: ") or 2024)
+    year = int(input("Year [2025]: ") or 2025)
     month = int(input("Month [1]: ") or 1)
 
     try:
@@ -34,7 +34,8 @@ def main():
     date_of_issue = date_of_service + timedelta(days=1)
     due_date = date_of_issue + timedelta(days=payment_terms)
 
-    rate = float(input(f"USD BnB rate on {date_of_issue.strftime('%d.%m.%Y')}: "))
+    rate = 1.95583  # EUR to BGN exchange rate
+    print(f"Exchange rate: {rate} BGN per 1 EUR (current rate from the Bulgarian National Bank)")
 
     additional_items = []
     additional_items_needed = input("Do you want to add additional items? [no]: ") or "no"
@@ -45,7 +46,7 @@ def main():
             if not item:
                 break
             item_bg = input("Item description in Bulgarian: ")
-            price = float(input("Item price in USD: "))
+            price = float(input("Item price in EUR: "))
             additional_items.append({
                 "description": item,
                 "description_bg": item_bg,

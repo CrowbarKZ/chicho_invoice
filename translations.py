@@ -2,7 +2,7 @@ en = {
     'bank_i18n': 'Bank',
     'company_number_i18n': 'Company number',
     'country_i18n': 'Bulgaria',
-    'currency_i18n': 'USD',
+    'currency_i18n': 'EUR',
     'date_i18n': 'Date',
     'date_of_issue_i18n': 'Date of issue',
     'days_i18n': 'days',
