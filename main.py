@@ -13,7 +13,7 @@ TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templat
 
 def main():
     # calculate data
-    year = int(input("Year [2025]: ") or 2025)
+    year = int(input("Year [2026]: ") or 2026)
     month = int(input("Month [1]: ") or 1)
 
     try:
