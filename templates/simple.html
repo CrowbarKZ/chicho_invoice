@@ -151,8 +151,8 @@
                 <td>{{ date_of_service_val }}</td>
                 <td>1</td>
                 <td>{{ month_i18n }}</td>
-                <td>{{ '%0.2f' | format(price_val) }} {{ currency_i18n }}</td>
-                <td>{{ '%0.2f' | format(price_val) }} {{ currency_i18n }}</td>
+                <td>{{ '%0.2f' | format(price_val) }} EUR</td>
+                <td>{{ '%0.2f' | format(price_val) }} EUR</td>
             </tr>
 
             {% for item in additional_items %}
@@ -162,8 +162,8 @@
                 <td>{{ date_of_service_val }}</td>
                 <td>1</td>
                 <td>{{ unit_i18n }}</td>
-                <td>{{ '%0.2f' | format(item.price) }} {{ currency_i18n }}</td>
-                <td>{{ '%0.2f' | format(item.price) }} {{ currency_i18n }}</td>
+                <td>{{ '%0.2f' | format(item.price) }} EUR</td>
+                <td>{{ '%0.2f' | format(item.price) }} EUR</td>
             </tr>
 
             {% endfor %}
@@ -174,21 +174,16 @@
                     <table>
                         <tr>
                             <td>{{ net_total_i18n }}:</td>
-                            <td>{{ '%0.2f' | format(total_val) }} {{ currency_i18n }}</td>
+                            <td>{{ '%0.2f' | format(total_val) }} EUR</td>
                         </tr>
                         <tr>
                             <td>{{ vat_i18n }}: 0.0%</td>
-                            <td>0.00 {{ currency_i18n }}</td>
+                            <td>0.00 EUR</td>
                         </tr>
                         <tr>
                             <td>{{ total_i18n }}:</td>
-                            <td>{{ '%0.2f' | format(total_val) }} {{ currency_i18n }}</td>
+                            <td>{{ '%0.2f' | format(total_val) }} EUR</td>
                         </tr>
-                        {% if language != 'en' %}
-                        <tr>
-                            <td colspan="2">* Курс EUR на {{ date_of_issue_val }} – {{ rate_val }}</td>
-                        </tr>
-                        {% endif %}
                     </table>
                 </td>
             </tr>

@@ -34,9 +34,6 @@ def main():
     date_of_issue = date_of_service + timedelta(days=1)
     due_date = date_of_issue + timedelta(days=payment_terms)
 
-    rate = 1.95583  # EUR to BGN exchange rate
-    print(f"Exchange rate: {rate} BGN per 1 EUR (current rate from the Bulgarian National Bank)")
-
     additional_items = []
     additional_items_needed = input("Do you want to add additional items? [no]: ") or "no"
     additional_items_needed = not(additional_items_needed == "no")
@@ -60,13 +57,7 @@ def main():
 
         # load private data
         data.update(getattr(private, language))
-
-        # adjust prices if we are generating a Bulgarian invoice
         price = data["price_pvt"]
-        if language != "en":
-            price = price * rate
-            for item in additional_items:
-                item["price"] = round(item["price"] * rate, 2)
 
         # calculate total
         total = price
@@ -82,7 +73,6 @@ def main():
                 "due_date_val": due_date.strftime("%d.%m.%Y"),
                 "price_val": price,
                 "total_val": total,
-                "rate_val": rate,
                 "invoice_number_val": invoice_number_str,
                 "additional_items": additional_items,
             }
