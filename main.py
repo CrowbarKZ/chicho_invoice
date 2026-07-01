@@ -2,7 +2,7 @@ import calendar
 import os
 from datetime import datetime, timedelta
 
-import pdfkit
+from weasyprint import HTML
 from jinja2 import Environment, FileSystemLoader
 
 import private
@@ -87,7 +87,7 @@ def main():
         # generate pdf
         folder = "output"
         filename = f"invoice_{invoice_number_str}_{language}_{month}_{year}.pdf"
-        pdfkit.from_string(html, os.path.join(folder, filename))
+        HTML(string=html).write_pdf(os.path.join(folder, filename))
 
         with open(".last_invoice", "w") as f:
             f.write(str(invoice_number))
